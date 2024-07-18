@@ -21,7 +21,8 @@ module WinChecker
                         end
                         win_tracker << win_progress
                 end
-                return false unless win_tracker.include?([1,1,1])
+                return false unless win_tracker.include?([1, 1, 1])
+                
                 return true
         end
 end

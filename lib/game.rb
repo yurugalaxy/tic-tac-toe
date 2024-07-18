@@ -10,11 +10,12 @@ class Game
         end
 
         def play
+                Player.disp_board
                 loop do
-                        puts "Noughts:".colorize(:blue)
+                        puts "Noughts enter your move (1 - 9):".colorize(:blue)
                         @noughts.take_turn
                         return "Noughts wins!".colorize(:green) if @noughts.winner?
-                        puts "Crosses:".colorize(:red)
+                        puts "Crosses enter your move (1 - 9)".colorize(:red)
                         @crosses.take_turn
                         return "Crosses wins!".colorize(:green) if @crosses.winner?
                 end

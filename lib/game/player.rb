@@ -14,6 +14,10 @@ class Player
                 @history = []
         end
 
+        def self.disp_board
+                GameBoard.print_board
+        end
+
         def take_turn
                 square = gets.chomp.to_i
                 while square < 1 || square > 9 || @@shared_history.include?(square) do
