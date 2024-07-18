@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module GameLoop
+module WinChecker
         WIN_COMBOS = [
                 [1, 2, 3],
                 [4, 5, 6],

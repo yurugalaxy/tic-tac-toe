@@ -2,5 +2,5 @@
 
 require_relative 'lib/game'
 
-oof = Game.new
-oof.play
+game = Game.new
+game.play
