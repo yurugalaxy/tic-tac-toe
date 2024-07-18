@@ -13,16 +13,15 @@ module GameLoop
         ]
 
         def winner?
+                win_tracker = []
                 WIN_COMBOS.each do |win_condition|
-                        win_check = []
-                        history.each do |square|
-                                next unless win_condition.include?(square)
-
-                                win_check << 1
+                        win_progress = []
+                        history.each do |hist|
+                                win_progress << 1 if win_condition.include?(hist)
                         end
-                        return false unless win_check == [1, 1, 1]
-
-                        return true
+                        win_tracker << win_progress
                 end
+                return false unless win_tracker.include?([1,1,1])
+                return true
         end
 end

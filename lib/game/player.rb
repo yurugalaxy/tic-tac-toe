@@ -23,10 +23,8 @@ class Player
                 square = gets.chomp.to_i
                 end
                 @@shared_history << square
-                p @@shared_history
                 history << square unless history.include?(square)
                 p history
                 @winner = true if winner?
-                p @winner
         end
 end
