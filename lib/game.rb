@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'colorize'
 require_relative 'game/player'
 
 class Game
@@ -10,20 +11,12 @@ class Game
 
         def play
                 loop do
-                        puts "Noughts:"
+                        puts "Noughts:".colorize(:blue)
                         @noughts.take_turn
-                        if @noughts.winner?
-                                puts "Noughts wins!"
-                                break
-                        end
-                        puts "Crosses:"
+                        return "Noughts wins!".colorize(:green) if @noughts.winner?
+                        puts "Crosses:".colorize(:red)
                         @crosses.take_turn
-                        if @crosses.winner?
-                                puts "Crosses wins!"
-                                break
-                        end
+                        return "Crosses wins!".colorize(:green) if @crosses.winner?
                 end
         end
-
-
 end

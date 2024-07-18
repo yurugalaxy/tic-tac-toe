@@ -1,38 +1,48 @@
 # frozen_string_literal: true
 
-class GameBoard
-        def initialize
-                @sq1 = '1'
-                @sq2 = '2'
-                @sq3 = '3'
-                @sq4 = '4'
-                @sq5 = '5'
-                @sq6 = '6'
-                @sq7 = '7'
-                @sq8 = '8'
-                @sq9 = '9'
-        
-                @sqX = 'x'
-                @sqO = 'o'
-                @board = ''
-        end
+module GameBoard
 
-        def print_board
+        def self.print_board
                 @board = <<~BOARD
-                #{@sq1}|#{@sq2}|#{@sq3}
-                -----
-                #{@sq4}|#{@sq5}|#{@sq6}
-                -----
-                #{@sq7}|#{@sq8}|#{@sq9}
+                
+                     |     |
+                #{@sq1 || ' (1) '}|#{@sq2 || ' (2) '}|#{@sq3 || ' (3) '}
+                     |     |
+                ------------------
+                     |     |
+                #{@sq4 || ' (4) '}|#{@sq5 || ' (5) '}|#{@sq6 || ' (6) '}
+                     |     |
+                ------------------
+                     |     |
+                #{@sq7 || ' (7) '}|#{@sq8 || ' (8) '}|#{@sq9 || ' (9) '}
+                     |     |
                 BOARD
                 puts @board
         end
 
-        def update_board(square)
+        def self.update_board(square, side)
+                colour = side == 'o' ? :blue : :red
+                text = "  #{side}  ".colorize(colour)
                 case square
-                when '1'
-                        @sq1 = 'x'
+                when 1
+                        @sq1 = text
+                when 2
+                        @sq2 = text
+                when 3
+                        @sq3 = text
+                when 4
+                        @sq4 = text
+                when 5
+                        @sq5 = text
+                when 6
+                        @sq6 = text
+                when 7
+                        @sq7 = text
+                when 8
+                        @sq8 = text
+                when 9
+                        @sq9 = text
                 end
-                print_board
+                self.print_board
         end
 end

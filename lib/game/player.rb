@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
-require_relative 'win'
+require_relative 'player/win'
+require_relative 'board'
 
 class Player
         @@shared_history = []
         include WinChecker
-        attr_reader :history
+        include GameBoard
+        attr_reader :history, :board, :side
 
         def initialize(side)
                 @side = side
@@ -18,6 +20,7 @@ class Player
                         puts "Invalid! Please choose another square:"
                         square = gets.chomp.to_i
                 end
+                GameBoard.update_board(square, side)
                 @@shared_history << square
                 history << square
         end
