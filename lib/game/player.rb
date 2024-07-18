@@ -3,6 +3,7 @@
 require_relative 'loop'
 
 class Player
+        @@shared_history = []
         include GameLoop
         attr_reader :history, :winner
 
@@ -11,5 +12,21 @@ class Player
                 @side = side
                 @history = []
                 @winner = false
+        end
+
+        def take_turn
+                square = 0
+                while square < 1 || square > 9 || @@shared_history.include?(square) do
+                        if @@shared_history.include?(square) 
+                                puts "taken"
+                        end
+                square = gets.chomp.to_i
+                end
+                @@shared_history << square
+                p @@shared_history
+                history << square unless history.include?(square)
+                p history
+                @winner = true if winner?
+                p @winner
         end
 end

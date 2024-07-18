@@ -11,9 +11,15 @@ class Game
         def play
                 loop do
                         @crosses.take_turn
-                        break if @crosses.winner == true
+                        if @crosses.winner == true
+                                puts "Crosses wins!"
+                                break
+                        end
                         @noughts.take_turn
-                        break if @noughts.winner == true
+                        if @noughts.winner == true
+                                puts "Noughts wins!"
+                                break
+                        end
                 end
         end
 

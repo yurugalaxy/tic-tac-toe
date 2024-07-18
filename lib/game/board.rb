@@ -28,10 +28,10 @@ class GameBoard
                 puts @board
         end
 
-        def update_board(square, side)
+        def update_board(square)
                 case square
                 when '1'
-                        @sq1 = side
+                        @sq1 = 'x'
                 end
                 print_board
         end
